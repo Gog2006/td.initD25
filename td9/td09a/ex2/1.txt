@@ -1,0 +1,25 @@
+1
+  int  + double  +char = 13 octets 
+  mais dans union la taille est égale à la taille du plus grand 
+  champ aux alignements près int double ou char donc 8 octets 
+
+2
+ rien ne se passe il y a aucun de fautes mais e1 est declaree comme flottante 
+ la valeur de e1.valeur.entier sera 2061584302
+ car la valeur est affichee comme lentier mais declaree comme entier en etant
+ flottante  
+
+3 
+ Pour spécifier le type de données stocké.
+
+4
+ e1(entier)=-1357404351 
+ car caractere a ete affiche sous type dentier 
+
+5 
+ voir ex2/5.c 
+
+6
+ utiliser une union plutôt qu’une structure est préférablement dans le cas de utilisation
+ ou manque de memoire car la taille de la structure est la somme des tailles de ses champs 
+ et la taille de union est la plus grande taille de son element 

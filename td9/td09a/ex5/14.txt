@@ -1,0 +1,4 @@
+car la fonction modifie uniquement des 
+copies locales des paramètres
+ pas les variables originales
+en C les paramètres sont passes par valeur par défaut

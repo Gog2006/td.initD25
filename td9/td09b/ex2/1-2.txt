@@ -1,0 +1,4 @@
+1- 100+100+4=204 octets 
+2-cest un passage avec les pointers, oui car ca prends moins de place 
+dan la memoire  
+3- dans ce code on peut voir dans printf  livre.titre mais ca doit etre  livre->titre car livre cest pointer 
