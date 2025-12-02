@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct Noeud {
+  int valeur;
+  struct Noeud* suivant;
+} Noeud;
+
+
+
+bool estVide(Noeud* file) {
+  return file == NULL;
+}
+
+
+void afficherFile(Noeud* file) {
+  if (file == NULL) {
+    printf("File vide: queue @(nil)\n");
+    return;
+  }
+  Noeud* tete = file;
+  Noeud* queue = file;
+  while (queue->suivant != NULL) {
+    queue = queue->suivant;
+  }
+  printf("File: tête = %d, queue = %d\n", tete->valeur, queue->valeur);
+}
+
+void enfiler(Noeud** file, int valeur) {
+  Noeud* nouveau = malloc(sizeof(Noeud));
+  nouveau->valeur = valeur;
+  nouveau->suivant = NULL;
+
+  if (*file == NULL) {
+    *file = nouveau;
+  } else {
+    Noeud* courant = *file;
+    while (courant->suivant != NULL) {
+      courant = courant->suivant;
+    }
+    courant->suivant = nouveau;
+  }
+}
+int defiler(Noeud** file) {
+  if (*file == NULL) {
+    fprintf(stderr, "Erreur: tentative de défilement d'une file vide.\n");
+    exit(EXIT_FAILURE);
+  }
+  Noeud* temp = *file;
+  int valeur = temp->valeur;
+  *file = (*file)->suivant;
+  free(temp);
+  return valeur;
+}
+
+
+
+
+
+int main() {
+  Noeud* file = NULL;
+  puts("# Etat initial");
+
+  printf("File vide ? %s\n", estVide(file) ? "vrai" : "faux");
+  afficherFile(file);
+
+  puts("\n# Début des enfilages");
+  for (int i = 0; i < 3; i++) {
+    printf("Enfile %d\n", i + 1);
+    enfiler(&file, i + 1);
+    afficherFile(file);
+  }
+
+  printf("File vide ? %s\n", estVide(file) ? "vrai" : "faux");
+
+  puts("\n# Début des défilements");
+  while (!estVide(file)) {
+    printf("Défile %d\n", defiler(&file));
+    afficherFile(file);
+  }
+
+  puts("\n# Etat final");
+
+  printf("File vide ? %s\n", estVide(file) ? "vrai" : "faux");
+}
