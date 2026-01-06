@@ -1,0 +1,7 @@
+langage
+reseaux
+programmer
+devops
+linux
+compiler
+pointeur
